@@ -4,10 +4,7 @@ import MainScreen from './screens/MainScreen';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>안녕하세요</Text>
-      <StatusBar style="auto" />
-    </View>
+    <MainScreen />
   );
 }
 
