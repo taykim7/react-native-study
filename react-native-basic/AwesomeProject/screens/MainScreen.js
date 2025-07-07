@@ -2,6 +2,7 @@ import { Platform, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import InputForm from '../components/InputForm';
+import TodoItem from '../components/TodoItem';
 
 export default function MainScreen() {
   return (
@@ -10,6 +11,7 @@ export default function MainScreen() {
       <Text style={styles.pageTitle}>투두앱</Text>
       <View style={styles.listView}>
         <Text style={styles.listTitle}>해야할 일</Text>
+        <TodoItem />
       </View>
       <View style={styles.separator} />
       <View style={styles.listView}>
