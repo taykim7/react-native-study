@@ -1,18 +1,52 @@
 import { KeyboardAvoidingView, Platform, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 const InputForm = () => {
+  // input Value state 생성성
+  const [currentValue, setCurrentValue] = useState('');
+
+  // dispatch
+  const dispatch = useDispatch
+
+  // dispatch 핸들러 - 공백이 아닐때만 dispatch + 값 비우기
+  const handleSubmit = () => {
+    if(currentValue !== '') {
+      dispatch(addTodo(currentValue));
+      setCurrentValue('');
+    }
+  }
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.addFormcontainer}>
         <TextInput
           style={styles.inputField}
-          placeholder='할 일을 작성해주세요.' />
+          placeholder='할 일을 작성해주세요.'
+          value={
+            // state
+            currentValue
+          }
+          onChangeText={
+            // 입력시 state 변경
+            setCurrentValue
+          }
+          onSubmitEditing={
+            // 버튼 클릭 이외에 엔터키로 Todo 생성
+            handleSubmit
+          }
+        />
         <Pressable
-          style={styles.addButton} >
+          style={styles.addButton}
+          onPress={
+            // 버튼 클릭시 Todo 생성
+            handleSubmit
+          }
+        >
           <Text
-            style={styles.addButtonText} >+</Text>
+            style={styles.addButtonText}
+          >+</Text>
         </Pressable>
     </KeyboardAvoidingView>
   )
