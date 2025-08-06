@@ -7,7 +7,7 @@ const InputForm = () => {
   const [currentValue, setCurrentValue] = useState('');
 
   // dispatch
-  const dispatch = useDispatch
+  const dispatch = useDispatch();
 
   // dispatch 핸들러 - 공백이 아닐때만 dispatch + 값 비우기
   const handleSubmit = () => {
