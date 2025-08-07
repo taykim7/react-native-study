@@ -22,21 +22,22 @@ export default function MainScreen() {
             renderItem={({item}) => <TodoItem {...item} />}
             keyExtractor={(item) => item.id}
           />
-        ) :
+          ) :
           (<Text style={styles.emptyListText}>할 일이 없습니다.</Text>)
         }
       </View>
       <View style={styles.separator} />
       <View style={styles.listView}>
         <Text style={styles.listTitle}>완료된 일</Text>
-        {completedTasks.length !== 0 ? (
-          <FlatList
-            data={completedTasks}
-            renderItem={({item}) => <TodoItem {...item} />}
-            keyExtractor={(item) => item.id }
-          />
-        ) :
-        (<Text></Text>)}
+          {completedTasks.length !== 0 ? (
+            <FlatList
+              data={completedTasks}
+              renderItem={({item}) => <TodoItem {...item} />}
+              keyExtractor={(item) => item.id }
+            />
+          ) :
+          (<Text style={styles.emptyListText}>완료된 일이 없습니다.</Text>)
+        }
       </View>
       <InputForm />
     </SafeAreaView>
@@ -71,5 +72,12 @@ const styles = StyleSheet.create({
     fontSize: 41,
     fontWeight: '500',
   },
-  emptyListText: {}
+  emptyListText: {
+    paddingTop: 10,
+    paddingBottom: 15,
+    paddingHorizontal: 15,
+    fontSize: 15,
+    lineHeight: 20,
+    color: '#737373'
+  }
 })
