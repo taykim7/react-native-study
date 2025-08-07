@@ -1,6 +1,7 @@
 import { KeyboardAvoidingView, Platform, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { addTodo } from '../redux/slices/todoSlice';
 
 const InputForm = () => {
   // input Value state 생성성
