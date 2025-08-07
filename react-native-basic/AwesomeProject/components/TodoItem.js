@@ -4,25 +4,30 @@ import CheckboxUnchecked from '../assets/checkbox-unchecked.svg';
 import CheckboxChecked from '../assets/checkbox-checked.svg';
 import DeleteIcon from '../assets/delete.svg';
 
-const TodoItem = () => {
+const TodoItem = (props) => {
   return (
     <View style={styles.itemContainer}>
       <Pressable
         style={styles.itemCheckBox}
         hitSlop={10}
       >
-        <CheckboxUnchecked />
-        <CheckboxChecked
-          style={styles.itemCheckboxCheckedIcon}
-        />
+        {props.state === 'todo' ?
+          <CheckboxUnchecked />
+          :
+          <CheckboxChecked
+            style={styles.itemCheckboxCheckedIcon}
+          />
+        }
       </Pressable>
       <Text
-        style={[styles.itemText, styles.itemTextChecked]}
+        style={[styles.itemText, 
+          props.state === 'done' ? styles.itemTextChecked : '']}
       >
-        코딩하기
+        {props.text}
       </Text>
       <Pressable
-        style={[styles.deleteButton, styles.deleteButtonDone]}
+        style={[styles.deleteButton,
+          props.state === 'done' ? styles.deleteButtonDone : '']}
         hitSlop={10}
       >
         <DeleteIcon />
